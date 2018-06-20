@@ -1,91 +1,62 @@
-// -*- mode: C++; c-indent-level: 4; c-basic-offset: 4; indent-tabs-mode: nil; -*-
-//
-// rcpp_module.cpp: Rcpp R/C++ interface class library -- Rcpp Module examples
-//
-// Copyright (C) 2010 - 2012  Dirk Eddelbuettel and Romain Francois
-//
-// This file is part of Rcpp.
-//
-// Rcpp is free software: you can redistribute it and/or modify it
-// under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 2 of the License, or
-// (at your option) any later version.
-//
-// Rcpp is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Rcpp.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Rcpp.h>
+#include <mpi.h>
 
 //' Hello
 //'
 //' Simple function using Rcpp modules
 //'
-//' @name hello
-//' 
-std::string hello() {
-    throw std::range_error( "boom" ) ;
+//' @name init
+//' @export
+//'
+int init() {
+
+  int flag;
+
+  MPI_Initialized(&flag);
+
+  if (flag) {
+    return 1;
+  }
+
+  MPI_Init(NULL, NULL);
+
+  return 1;
 }
 
-int bar(int x) {
-    return x*2;
+//' @name finalize
+//' @export
+int finalize() {
+  MPI_Finalize();
+  return 1;
 }
 
-double foo(int x, double y) {
-    return x * y;
+//' @name get_world_size
+//' @export
+int get_world_size() {
+  int world_size;
+  MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+  return world_size;
 }
 
-void bla() {
-    Rprintf("hello\\n");
+//' @name get_world_rank
+//' @export
+int get_world_rank() {
+  int world_rank;
+  MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+  return world_rank;
 }
 
-void bla1(int x) {
-    Rprintf("hello (x = %d)\\n", x);
-}
+RCPP_MODULE(ompi){
 
-void bla2( int x, double y) {
-    Rprintf("hello (x = %d, y = %5.2f)\\n", x, y);
-}
+    using namespace Rcpp;
 
-class World {
-public:
-    World() : msg("hello") {}
-    void set(std::string msg) { this->msg = msg; }
-    std::string greet() { return msg; }
-
-private:
-    std::string msg;
-};
-
-
-
-RCPP_MODULE(yada){
-    using namespace Rcpp ;
-
-    function("hello" , &hello  , "documentation for hello ");
-    function("bla"   , &bla    , "documentation for bla ");
-    function("bla1"  , &bla1   , "documentation for bla1 ");
-    function("bla2"  , &bla2   , "documentation for bla2 ");
-
-    // with formal arguments specification
-    function("bar"   , &bar    ,
-             List::create( _["x"] = 0.0),
-             "documentation for bar ");
-    function("foo"   , &foo    ,
-             List::create( _["x"] = 1, _["y"] = 1.0),
-             "documentation for foo ");
-
-    class_<World>("World")
-    // expose the default constructor
-    .constructor()
-
-    .method("greet", &World::greet , "get the message")
-    .method("set", &World::set     , "set the message")
-    ;
+    function("init", &init, "documentation for init");
+    function("finalize", &finalize, "documentation for finalize");
+    function("get_world_size", &get_world_size,
+             "documentation for get_world_size");
+    function("get_world_rank", &get_world_rank,
+             "documentation for get_world_rank");
 }
 
 

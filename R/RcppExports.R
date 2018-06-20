@@ -5,7 +5,20 @@
 #'
 #' Simple function using Rcpp modules
 #'
-#' @name hello
-#' 
+#' @name init
+#' @export
+#'
+NULL
+
+#' @name finalize
+#' @export
+NULL
+
+#' @name get_world_size
+#' @export
+NULL
+
+#' @name get_world_rank
+#' @export
 NULL
 

@@ -6,10 +6,10 @@
 using namespace Rcpp;
 
 
-RcppExport SEXP _rcpp_module_boot_yada();
+RcppExport SEXP _rcpp_module_boot_ompi();
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_rcpp_module_boot_yada", (DL_FUNC) &_rcpp_module_boot_yada, 0},
+    {"_rcpp_module_boot_ompi", (DL_FUNC) &_rcpp_module_boot_ompi, 0},
     {NULL, NULL, 0}
 };
 

@@ -9,4 +9,4 @@
 #' @name rmpi3-package
 NULL
 
-loadModule("yada", TRUE)
+loadModule("ompi", TRUE)
