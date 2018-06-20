@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if ! [ -x "$(command -v mpicc)" ]; then
+  echo 'Error: mpicc is not available.' >&2
+  exit 1
+fi
+
+PKG_CFLAGS=$(mpicc --showme:compile)
+PKG_LIBS=$(mpicc --showme:link)
+
+# Write to Makevars
+sed -e "s|@cflags@|$PKG_CFLAGS|" -e "s|@libs@|$PKG_LIBS|" src/Makevars.in > src/Makevars
+
+# Success
+exit 0

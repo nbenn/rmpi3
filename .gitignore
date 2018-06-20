@@ -2,3 +2,4 @@
 *.sublime-workspace
 src/*.o
 src/*.so
+src/Makevars
