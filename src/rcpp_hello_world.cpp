@@ -2,6 +2,11 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+//' Hello world
+//'
+//' Simple function using Rcpp
+//' 
+//' @export
 // [[Rcpp::export]]
 List rcpp_hello_world() {
 

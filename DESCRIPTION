@@ -9,3 +9,4 @@ LazyData: true
 ByteCompile: true
 Imports: methods, Rcpp (>= 0.12.17)
 LinkingTo: Rcpp
+RoxygenNote: 6.0.1

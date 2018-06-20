@@ -1,4 +1,14 @@
 
+#' A short title line describing what the package does
+#' 
+#' A more detailed description of what the package does. A length  of about
+#' one to five lines is recommended.
+#' 
+#' @import methods Rcpp
+#' @useDynLib rmpi3, .registration = TRUE
+#' @name rmpi3-package
+NULL
+
 ## Up until R 2.15.0, the require("methods") is needed but (now)
 ## triggers an warning from R CMD check
 #.onLoad <- function(libname, pkgname){

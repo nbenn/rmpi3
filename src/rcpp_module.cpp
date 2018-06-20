@@ -21,6 +21,12 @@
 
 #include <Rcpp.h>
 
+//' Hello
+//'
+//' Simple function using Rcpp modules
+//'
+//' @name hello
+//' 
 std::string hello() {
     throw std::range_error( "boom" ) ;
 }
