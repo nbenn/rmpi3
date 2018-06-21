@@ -5,8 +5,10 @@ if ! [ -x "$(command -v mpicc)" ]; then
   exit 1
 fi
 
-PKG_CFLAGS=$(mpicc --showme:compile)
-PKG_LIBS=$(mpicc --showme:link)
+mpic++ --showme:version
+
+PKG_CFLAGS=$(mpic++ --showme:compile)
+PKG_LIBS=$(mpic++ --showme:link)
 
 # Write to Makevars
 sed -e "s|@cflags@|$PKG_CFLAGS|" -e "s|@libs@|$PKG_LIBS|" src/Makevars.in > src/Makevars
