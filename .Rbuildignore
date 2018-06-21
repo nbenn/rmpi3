@@ -1,3 +1,5 @@
 ^LICENSE\.md$
 ^\.travis\.yml$
 ^.*\.sublime-(project|workspace)$
+^README\.Rmd$
+^README-.*\.png$
