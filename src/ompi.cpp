@@ -25,6 +25,7 @@ int init() {
 }
 
 //' @name finalize
+//' @rdname init
 //' @export
 int finalize() {
   MPI_Finalize();
@@ -32,6 +33,7 @@ int finalize() {
 }
 
 //' @name get_world_size
+//' @rdname init
 //' @export
 int get_world_size() {
   int world_size;
@@ -40,6 +42,7 @@ int get_world_size() {
 }
 
 //' @name get_world_rank
+//' @rdname init
 //' @export
 int get_world_rank() {
   int world_rank;

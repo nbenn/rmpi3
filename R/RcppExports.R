@@ -11,14 +11,17 @@
 NULL
 
 #' @name finalize
+#' @rdname init
 #' @export
 NULL
 
 #' @name get_world_size
+#' @rdname init
 #' @export
 NULL
 
 #' @name get_world_rank
+#' @rdname init
 #' @export
 NULL
 

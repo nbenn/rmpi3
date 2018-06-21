@@ -2,6 +2,9 @@
 % Please edit documentation in R/RcppExports.R
 \name{init}
 \alias{init}
+\alias{finalize}
+\alias{get_world_size}
+\alias{get_world_rank}
 \title{Hello}
 \description{
 Simple function using Rcpp modules
