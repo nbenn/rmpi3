@@ -1,6 +1,6 @@
 
-#include <Rcpp.h>
 #include <mpi.h>
+#include <Rcpp.h>
 
 //' Hello
 //'
