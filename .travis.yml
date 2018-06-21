@@ -2,10 +2,13 @@
 
 language: R
 sudo: false
-cache: packages
+cache:
+  - packages: true
+  - directories:
+    - /usr/openmpi3
 
 before_install:
   - wget --no-check-certificate https://download.open-mpi.org/release/open-mpi/v3.0/openmpi-3.0.0.tar.gz
   - tar -zxf openmpi-3.0.0.tar.gz
-  - pushd openmpi-3.0.0 && ./configure --prefix=$HOME/openmpi3 && make all install && popd
-  - export PATH=$HOME/openmpi3/bin:$PATH
+  - pushd openmpi-3.0.0 && ./configure --prefix=/usr/openmpi3 && sudo make all install && popd
+  - export PATH=/usr/openmpi3/bin:$PATH
