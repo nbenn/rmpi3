@@ -1,5 +1,8 @@
 
 #include <mpi.h>
+#ifndef __APPLE__
+#include <dlfcn.h>
+#endif
 #include <Rcpp.h>
 
 //' Hello
