@@ -5,5 +5,7 @@ sudo: false
 cache: packages
 
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y -q openmpi-bin libopenmpi-dev
+  - wget --no-check-certificate https://download.open-mpi.org/release/open-mpi/v3.0/openmpi-3.0.0.tar.gz
+  - tar -zxf openmpi-3.0.0.tar.gz
+  - pushd openmpi-3.0.0 && ./configure --prefix=$HOME/openmpi3 && make all install && popd
+  - export PATH=$HOME/openmpi3/bin:$PATH
