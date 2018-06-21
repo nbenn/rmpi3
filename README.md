@@ -4,6 +4,8 @@
 rmpi3
 =====
 
+[![Build Status](https://travis-ci.org/nbenn/rmpi3.svg?branch=master)](https://travis-ci.org/nbenn/rmpi3)
+
 The goal of rmpi3 is to ...
 
 Installation
