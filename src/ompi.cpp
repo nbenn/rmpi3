@@ -9,27 +9,33 @@
 //' @name init
 //' @export
 //'
-int init() {
+void init() {
 
   int flag;
 
   MPI_Initialized(&flag);
 
   if (flag) {
-    return 1;
+    Rcpp::warning("mpi has already been initialized.");
+  } else {
+    MPI_Init(NULL, NULL);
   }
-
-  MPI_Init(NULL, NULL);
-
-  return 1;
 }
 
 //' @name finalize
 //' @rdname init
 //' @export
-int finalize() {
-  MPI_Finalize();
-  return 1;
+void finalize() {
+
+  int flag;
+
+  MPI_Finalized(&flag);
+
+  if (flag) {
+    Rcpp::warning("mpi has already been finalized.");
+  } else {
+    MPI_Finalize();    
+  }
 }
 
 //' @name get_world_size
