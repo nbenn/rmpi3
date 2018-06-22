@@ -6,7 +6,7 @@ wget --no-check-certificate https://download.open-mpi.org/release/open-mpi/v3.0/
 tar -zxf openmpi-3.0.0.tar.gz
 cd openmpi-3.0.0
 ./configure --prefix=/usr/openmpi3
-sudo make -j 2 all install
+make all install
 echo "done with install"
 cd ..
 ls
