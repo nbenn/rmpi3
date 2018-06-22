@@ -3,3 +3,4 @@
 ^.*\.sublime-(project|workspace)$
 ^README\.Rmd$
 ^README-.*\.png$
+^install-ompi3.sh$
