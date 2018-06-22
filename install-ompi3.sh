@@ -7,5 +7,7 @@ tar -zxf openmpi-3.0.0.tar.gz
 cd openmpi-3.0.0
 ./configure --prefix=/usr/openmpi3
 sudo make -j 2 all install
+echo "done with install"
 cd ..
-rm -fr openmpi3
+ls
+rm -rf openmpi3
