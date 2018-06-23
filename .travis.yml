@@ -5,8 +5,8 @@ sudo: false
 cache:
   - packages: true
   - directories:
-    - /usr/openmpi3
+    - /home/travis/build/nbenn/openmpi3
 
 before_install:
   - ./install-ompi3.sh
-  - export PATH=/usr/openmpi3/bin:$PATH
+  - export PATH=/home/travis/build/nbenn/openmpi3/bin:$PATH
