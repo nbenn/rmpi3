@@ -1,7 +1,6 @@
 #!/bin/sh
 set -ex
-if [ ! -d "$OMPI_DIR" ]; then
-  mkdir -p $OMPI_DIR
+if [ -z "$(ls -A $OMPI_DIR)" ]; then
   cd $OMPI_DIR
   wget --no-check-certificate https://download.open-mpi.org/release/open-mpi/v3.0/openmpi-3.0.0.tar.gz
   tar -zxf openmpi-3.0.0.tar.gz
