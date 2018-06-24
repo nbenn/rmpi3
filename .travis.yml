@@ -2,11 +2,13 @@
 
 language: R
 sudo: false
+env:
+  OMPI_DIR="$(dirname $TRAVIS_BUILD_DIR)/openmpi3"
 cache:
   - packages: true
   - directories:
-    - /home/travis/build/nbenn/openmpi3
+    - $OMPI_DIR
 
 before_install:
   - ./install-ompi3.sh
-  - export PATH=/home/travis/build/nbenn/openmpi3/bin:$PATH
+  - export PATH=$OMPI_DIR/bin:$PATH
