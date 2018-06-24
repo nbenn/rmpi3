@@ -1,7 +1,5 @@
 #!/bin/sh
 set -ex
-ls $OMPI_DIR
-rm -rf $OMPI_DIR
 if [ ! -d "$OMPI_DIR" ]; then
   mkdir -p $OMPI_DIR
   cd $OMPI_DIR
@@ -9,7 +7,7 @@ if [ ! -d "$OMPI_DIR" ]; then
   tar -zxf openmpi-3.0.0.tar.gz
   cd openmpi-3.0.0
   ./configure --prefix=$OMPI_DIR
-  make -j 2 all install
+  make all install
   cd ..
   rm -rf openmpi-3.0.0 openmpi-3.0.0.tar.gz
   echo "installed openMPI to $(pwd)"
