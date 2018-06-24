@@ -1,0 +1,21 @@
+
+# OpenMPI header and libraries
+MPICPPFLAGS=$(shell mpic++ -showme:compile)
+MPILIBS=$(shell mpic++ -showme:link)
+
+PKG_CPPFLAGS=$(MPICPPFLAGS)
+PKG_LIBS=$(MPILIBS)
+
+## include headers and libraries for Rcpp interface classes
+RCPPINCL=$(shell echo 'Rcpp:::CxxFlags()' | $(R_HOME)/bin/R --vanilla --slave)
+
+## include headers and libraries for RInside embedding classes
+RINSIDEINCL=$(shell echo 'RInside:::CxxFlags()' | $(R_HOME)/bin/R --vanilla --slave)
+RINSIDELIBS=$(shell echo 'RInside:::LdFlags()' | $(R_HOME)/bin/R --vanilla --slave)
+
+.PHONY: all
+
+all: $(SHLIB) worker/runner
+
+worker/runner: worker/runner.cpp
+	$(CXX) $(ALL_CPPFLAGS) $(ALL_LIBS) $(RCPPINCL) $(RINSIDEINCL) $(RINSIDELIBS) $< -o $@
