@@ -1,5 +1,7 @@
 #!/bin/sh
 set -ex
+ls $OMPI_DIR
+rm -rf $OMPI_DIR
 if [ ! -d "$OMPI_DIR" ]; then
   mkdir -p $OMPI_DIR
   cd $OMPI_DIR
