@@ -1,0 +1,11 @@
+PKG_CPPFLAGS=@mpicppflags@
+PKG_LIBS=@mpilibs@
+
+RINSIDELIBS=@rinsidelibs@
+
+.PHONY: all
+
+all: $(SHLIB) worker/runner
+
+worker/runner: worker/runner.cpp
+	$(CXX) $(ALL_CPPFLAGS) $< $(RINSIDELIBS) $(ALL_LIBS) -o $@

@@ -1,5 +1,6 @@
 *.sublime-project
 *.sublime-workspace
 src/worker/runner
+src/Makevars
 src/*.o
 src/*.so

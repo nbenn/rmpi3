@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if ! [ -x "$(command -v mpicxx)" ]; then
+  echo 'Error: mpicxx is not available.' >&2
+  exit 1
+fi
+
+# OpenMPI header and libraries
+MPICPPFLAGS=$(mpicxx -showme:compile)
+MPILIBS=$(mpicxx -showme:link)
+
+# RInside libraries
+RINSIDELIBS=$(echo 'RInside:::LdFlags()' | R --vanilla --slave)
+
+# Write to Makevars
+sed \
+  -e "s|@mpicppflags@|$MPICPPFLAGS|" \
+  -e "s|@mpilibs@|$MPILIBS|" \
+  -e "s|@rinsidelibs@|$RINSIDELIBS|" \
+  src/Makevars.in > src/Makevars
+
+# Success
+exit 0
