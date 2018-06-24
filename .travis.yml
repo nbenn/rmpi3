@@ -6,7 +6,10 @@ sudo: false
 
 env: OMPI_DIR="$(dirname $TRAVIS_BUILD_DIR)/openmpi3"
 
-cache: packages
+cache:
+  - packages: true
+  - directories:
+    - $OMPI_DIR
 
 before_install:
   - ./install-ompi3.sh
