@@ -13,7 +13,7 @@ RINSIDELIBS=$(shell echo 'RInside:::LdFlags()' | $(R_HOME)/bin/R --vanilla --sla
 all: $(SHLIB) print_vars worker/runner
 
 worker/runner: worker/runner.cpp
-	$(CXX) $(ALL_CPPFLAGS) $(RINSIDELIBS) $(ALL_LIBS) $< -o $@
+	$(CXX) $(ALL_CPPFLAGS) $< $(RINSIDELIBS) $(ALL_LIBS) -o $@
 
 print_vars:
 	@echo $(CXX)
