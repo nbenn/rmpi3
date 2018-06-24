@@ -10,7 +10,7 @@ MPICPPFLAGS=$(mpicxx -showme:compile)
 MPILIBS=$(mpicxx -showme:link)
 
 # RInside libraries
-RINSIDELIBS=$(echo 'RInside:::LdFlags()' | R --vanilla --slave)
+RINSIDELIBS=$(echo 'RInside:::LdFlags()' | ${R_HOME}/bin/R --vanilla --slave)
 
 # Write to Makevars
 sed \
