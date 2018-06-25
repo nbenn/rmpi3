@@ -21,13 +21,6 @@ void init() {
   if (flag) {
     Rcpp::warning("mpi has already been initialized.");
   } else {
-#ifndef __APPLE__
-    if (!dlopen("libmpi.so.1", RTLD_GLOBAL | RTLD_LAZY) &&
-        !dlopen("libmpi.so.0", RTLD_GLOBAL | RTLD_LAZY) &&
-        !dlopen("libmpi.so", RTLD_GLOBAL | RTLD_LAZY)) {
-      Rcpp::stop(dlerror());
-    }
-#endif
     MPI_Init(NULL, NULL);
   }
 }
