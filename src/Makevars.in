@@ -9,3 +9,6 @@ all: $(SHLIB) worker/runner
 
 worker/runner: worker/runner.cpp
 	$(CXX) $(ALL_CPPFLAGS) $< $(RINSIDELIBS) $(ALL_LIBS) -o $@
+
+clean:
+	rm -rf $(SHLIB) $(OBJECTS) worker/runner
